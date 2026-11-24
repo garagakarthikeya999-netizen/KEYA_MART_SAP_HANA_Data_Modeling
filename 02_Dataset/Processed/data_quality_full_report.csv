@@ -1,0 +1,20 @@
+check_type,table_name,column_name,null_records,duplicate_records,orphan_records
+Primary Key,CUSTOMERS,customer_id,0,0,
+Primary Key,ORDERS,order_id,0,0,
+Primary Key,PRODUCTS,product_id,0,0,
+Primary Key,SELLERS,seller_id,0,0,
+Composite PK,ORDER_ITEMS,order_id + order_item_id,0,0,
+Composite PK,PAYMENTS,order_id + payment_sequential,0,0,
+Primary Key,ORDER_REVIEWS,review_id,0,814,
+Composite PK,ORDER_REVIEWS,review_id + order_id,0,0,
+Primary Key,GEOLOCATION,geolocation_zip_code_prefix,0,981148,
+Primary Key,CATEGORY_TRANSLATION,product_category_name,0,0,
+Foreign Key,ORDERS,customer_id -> CUSTOMERS.customer_id,0,,0
+Foreign Key,ORDER_ITEMS,order_id -> ORDERS.order_id,0,,0
+Foreign Key,ORDER_ITEMS,product_id -> PRODUCTS.product_id,0,,0
+Foreign Key,ORDER_ITEMS,seller_id -> SELLERS.seller_id,0,,0
+Foreign Key,PAYMENTS,order_id -> ORDERS.order_id,0,,0
+Foreign Key,ORDER_REVIEWS,order_id -> ORDERS.order_id,0,,0
+Foreign Key,CUSTOMERS,customer_zip_code_prefix -> GEOLOCATION.geolocation_zip_code_prefix,0,,278
+Foreign Key,SELLERS,seller_zip_code_prefix -> GEOLOCATION.geolocation_zip_code_prefix,0,,7
+Foreign Key,PRODUCTS,product_category_name -> CATEGORY_TRANSLATION.product_category_name,610,,13

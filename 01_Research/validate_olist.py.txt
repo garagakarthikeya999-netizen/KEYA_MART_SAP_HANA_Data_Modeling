@@ -1,0 +1,25 @@
+
+import os
+import pandas as pd
+
+BASE = os.path.join(
+    os.path.expanduser("~"),
+    "Documents",
+    "SAP_HANA_WEEK1_PROJECT"
+)
+
+RAW = os.path.join(BASE, "02_Dataset", "Raw")
+
+print("KEYA MART - CSV FILE CHECK")
+print("--------------------------")
+
+for filename in os.listdir(RAW):
+    if filename.endswith(".csv"):
+        filepath = os.path.join(RAW, filename)
+
+        data = pd.read_csv(filepath)
+
+        print(filename, ":", len(data), "records")
+
+print("--------------------------")
+print("CHECK COMPLETED")

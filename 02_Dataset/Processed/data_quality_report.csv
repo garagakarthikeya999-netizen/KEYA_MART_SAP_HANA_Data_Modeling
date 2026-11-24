@@ -1,0 +1,12 @@
+check_type,table_name,column_name,null_records,duplicate_records,orphan_records
+Primary Key,CUSTOMERS,customer_id,0,0,
+Primary Key,ORDERS,order_id,0,0,
+Primary Key,PRODUCTS,product_id,0,0,
+Primary Key,SELLERS,seller_id,0,0,
+Composite Primary Key,ORDER_ITEMS,order_id + order_item_id,0,0,
+Composite Primary Key,PAYMENTS,order_id + payment_sequential,0,0,
+Foreign Key,ORDERS,customer_id,0,,0
+Foreign Key,ORDER_ITEMS,order_id,0,,0
+Foreign Key,ORDER_ITEMS,product_id,0,,0
+Foreign Key,ORDER_ITEMS,seller_id,0,,0
+Foreign Key,PAYMENTS,order_id,0,,0

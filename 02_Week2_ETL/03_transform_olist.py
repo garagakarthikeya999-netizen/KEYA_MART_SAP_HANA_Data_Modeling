@@ -1,15 +1,3 @@
-"""
-KEYA MART - Week 2 ETL Pipeline
-Phase 4: Data Transformation, Integration & Audit Logging
-Transforms the 9 raw Olist CSVs into 8 clean HANA-ready CSVs:
-- Geolocation reduction (1,000,163 -> 19,015 unique zip prefixes)
-- Product + Category Translation integration + typo fix ('lenght' -> 'length')
-- Missing value imputation without deleting valid records
-- Date/timestamp & column name standardization
-- Business rule & referential integrity validation
-- Full transformation audit log & before/after examples
-"""
-
 from pathlib import Path
 import pandas as pd
 

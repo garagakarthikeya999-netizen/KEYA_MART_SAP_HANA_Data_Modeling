@@ -1,10 +1,3 @@
-"""
-KEYA MART - Week 2 ETL Pipeline
-Phase 2: Data Extraction & Source Validation Script
-Reads all 9 raw Olist CSV files, checks encoding/delimiters,
-inspects structure, and saves an extraction summary report.
-"""
-
 from pathlib import Path
 import pandas as pd
 

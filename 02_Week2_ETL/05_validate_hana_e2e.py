@@ -1,14 +1,3 @@
-"""
-KEYA MART - Week 2 ETL Pipeline
-Phase 6: End-to-End SQL Data Validation in SAP HANA Cloud
-Executes live SQL validation checks on KEYA_MART:
-- Source vs Target row counts
-- Duplicate & Primary Key uniqueness checks
-- Critical Null value checks
-- Foreign Key referential integrity checks
-- Business rule checks & Analytical View verification
-"""
-
 import getpass
 from pathlib import Path
 import pandas as pd

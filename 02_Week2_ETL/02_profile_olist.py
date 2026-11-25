@@ -1,14 +1,3 @@
-"""
-KEYA MART - Week 2 ETL Pipeline
-Phase 3: Data Profiling Script
-Analyzes all 9 raw Olist CSVs for:
-- Column names, data types, record counts
-- Missing values (null count & %)
-- Exact duplicate rows
-- Unique values & Primary Key candidates
-- Foreign Key relationship checks & data quality issues
-"""
-
 from pathlib import Path
 import pandas as pd
 

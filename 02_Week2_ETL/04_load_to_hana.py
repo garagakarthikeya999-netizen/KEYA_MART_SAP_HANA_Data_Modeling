@@ -1,13 +1,3 @@
-"""
-KEYA MART - Week 2 ETL Pipeline
-Phase 5: SAP HANA Cloud Connectivity & Batch Loading Script
-- Connects securely to SAP HANA Cloud using hdbcli (Port 443, TLS)
-- Selects KEYA_MART schema & checks existing table compatibility
-- Demonstrates safe batch loading (executemany, batch_size=5000)
-  into KEYA_MART.WEEK2_STAGING_GEOLOCATION without altering Week 1 tables
-- Verifies target row count and saves load audit CSV
-"""
-
 import time
 import getpass
 from pathlib import Path

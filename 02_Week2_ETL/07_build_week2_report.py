@@ -6,12 +6,13 @@ from docx import Document
 from docx.shared import Inches, Pt, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.table import WD_TABLE_ALIGNMENT
-from docx.oxml import OxmlElement, parse_xml
-from docx.oxml.ns import nsdecls, qn
+from docx.oxml import parse_xml
+from docx.oxml.ns import nsdecls
 
 ROOT = Path(r"C:\Users\garag\Documents\SAP_HANA_WEEK1_PROJECT")
 OUT_DIR = ROOT / "02_Week2_ETL" / "outputs"
 DIAG_DIR = ROOT / "04_Diagrams"
+SHOT_DIR = ROOT / "06_Screenshots"
 DOC_PATH = ROOT / "05_Documentation" / "KEYA_MART_Week2_ETL_Report.docx"
 
 SAP_BLUE = RGBColor(0x0F, 0x4C, 0x81)
@@ -51,10 +52,8 @@ def add_body(text, bold_prefix=None):
     return p
 
 
-def add_csv_table(csv_name, max_cols=None):
+def add_csv_table(csv_name):
     df = pd.read_csv(OUT_DIR / csv_name)
-    if max_cols:
-        df = df[max_cols]
     table = doc.add_table(rows=1, cols=len(df.columns))
     table.alignment = WD_TABLE_ALIGNMENT.CENTER
     table.style = "Table Grid"
@@ -83,15 +82,14 @@ def add_csv_table(csv_name, max_cols=None):
     doc.add_paragraph().paragraph_format.space_after = Pt(4)
 
 
-def add_diagram(filename, caption):
-    img_path = DIAG_DIR / filename
+def add_image(img_path, caption, max_width_px=1400, quality=82):
     with Image.open(img_path) as im:
         rgb = im.convert("RGB")
-        if rgb.width > 1400:
-            ratio = 1400 / rgb.width
-            rgb = rgb.resize((1400, int(rgb.height * ratio)), Image.Resampling.LANCZOS)
+        if rgb.width > max_width_px:
+            ratio = max_width_px / rgb.width
+            rgb = rgb.resize((max_width_px, int(rgb.height * ratio)), Image.Resampling.LANCZOS)
         buf = BytesIO()
-        rgb.save(buf, format="JPEG", quality=85, optimize=True)
+        rgb.save(buf, format="JPEG", quality=quality, optimize=True)
         buf.seek(0)
     p = doc.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -143,11 +141,11 @@ add_body("SAP HANA Cloud (TLS Port 443), Schema: KEYA_MART, User: DBADMIN (<REDA
 # --- 3. Architecture & Workflow Diagrams ---
 add_heading("3. ETL Architecture & Workflow Diagrams", level=1)
 add_body("The five diagrams below illustrate the complete Week 2 ETL design created in Draw.io.")
-add_diagram("01_Overall_ETL_Architecture.drawio.png", "Figure 1: Overall ETL Architecture")
-add_diagram("02_Data_Extraction_Flowchart.drawio.png", "Figure 2: Data Extraction Flowchart (01_extract_olist.py)")
-add_diagram("03_Data_Transformation_Flowchart.drawio.png", "Figure 3: Data Transformation Flowchart (03_transform_olist.py)")
-add_diagram("04_SAP_HANA_Loading_Architecture.drawio.png", "Figure 4: SAP HANA Data Loading Architecture (04_load_to_hana.py)")
-add_diagram("05_End_to_End_ETL_Workflow.drawio.png", "Figure 5: Complete End-to-End ETL Workflow")
+add_image(DIAG_DIR / "01_Overall_ETL_Architecture.drawio.png", "Figure 1: Overall ETL Architecture")
+add_image(DIAG_DIR / "02_Data_Extraction_Flowchart.drawio.png", "Figure 2: Data Extraction Flowchart (01_extract_olist.py)")
+add_image(DIAG_DIR / "03_Data_Transformation_Flowchart.drawio.png", "Figure 3: Data Transformation Flowchart (03_transform_olist.py)")
+add_image(DIAG_DIR / "04_SAP_HANA_Loading_Architecture.drawio.png", "Figure 4: SAP HANA Data Loading Architecture (04_load_to_hana.py)")
+add_image(DIAG_DIR / "05_End_to_End_ETL_Workflow.drawio.png", "Figure 5: Complete End-to-End ETL Workflow")
 
 # --- 4. Data Extraction ---
 add_heading("4. Phase 2 - Data Extraction (01_extract_olist.py)", level=1)
@@ -198,8 +196,23 @@ add_heading("9. Phase 8 - Challenges & Solutions", level=1)
 add_body("The table below summarizes the real cloud connectivity, authentication, and data quality challenges resolved during Week 2.")
 add_csv_table("06_challenges_and_solutions.csv")
 
-# --- 10. Conclusion ---
-add_heading("10. Conclusion", level=1)
+# --- 10. Execution & Verification Screenshots ---
+screenshots = sorted(
+    p for p in SHOT_DIR.iterdir()
+    if p.is_file() and p.suffix.lower() in {".png", ".jpg", ".jpeg"}
+) if SHOT_DIR.exists() else []
+
+add_heading("10. Execution & Verification Screenshots", level=1)
+if screenshots:
+    add_body(f"Included {len(screenshots)} verification screenshot(s) from 06_Screenshots.")
+    for idx, shot in enumerate(screenshots, start=6):
+        label = shot.stem.replace("_", " ").replace("-", " ").title()
+        add_image(shot, f"Figure {idx}: {label}", max_width_px=1300, quality=78)
+else:
+    add_body("No screenshots were found in 06_Screenshots at build time.")
+
+# --- 11. Conclusion ---
+add_heading("11. Conclusion", level=1)
 add_body(
     "The Week 2 ETL pipeline successfully transformed 1,550,922 raw Olist records into 569,703 clean, validated records "
     "in SAP HANA Cloud (KEYA_MART), backed by automated Python audit logs, 17 passing SQL integrity checks, and 5 architecture diagrams."
@@ -209,4 +222,5 @@ DOC_PATH.parent.mkdir(parents=True, exist_ok=True)
 doc.save(DOC_PATH)
 size_kb = DOC_PATH.stat().st_size / 1024
 print(f"Generated: {DOC_PATH}")
+print(f"Screenshots embedded: {len(screenshots)} -> {[s.name for s in screenshots]}")
 print(f"File size: {size_kb:.1f} KB (Limit: 2048 KB)")

@@ -1,0 +1,10 @@
+file_name,status,encoding_used,delimiter,file_size_mb,row_count,column_count,memory_mb,columns
+olist_customers_dataset.csv,VALID,utf-8,",",8.62,99441,5,26.59,"customer_id, customer_unique_id, customer_zip_code_prefix, customer_city, customer_state"
+olist_geolocation_dataset.csv,VALID,utf-8,",",58.44,1000163,5,129.38,"geolocation_zip_code_prefix, geolocation_lat, geolocation_lng, geolocation_city, geolocation_state"
+olist_orders_dataset.csv,VALID,utf-8,",",16.84,99441,8,52.94,"order_id, customer_id, order_status, order_purchase_timestamp, order_approved_at, order_delivered_carrier_date, order_delivered_customer_date, order_estimated_delivery_date"
+olist_order_items_dataset.csv,VALID,utf-8,",",14.72,112650,7,35.99,"order_id, order_item_id, product_id, seller_id, shipping_limit_date, price, freight_value"
+olist_order_payments_dataset.csv,VALID,utf-8,",",5.51,103886,5,16.23,"order_id, payment_sequential, payment_type, payment_installments, payment_value"
+olist_order_reviews_dataset.csv,VALID,utf-8,",",13.78,99224,7,39.12,"review_id, order_id, review_score, review_comment_title, review_comment_message, review_creation_date, review_answer_timestamp"
+olist_products_dataset.csv,VALID,utf-8,",",2.27,32951,9,6.3,"product_id, product_category_name, product_name_lenght, product_description_lenght, product_photos_qty, product_weight_g, product_length_cm, product_height_cm, product_width_cm"
+olist_sellers_dataset.csv,VALID,utf-8,",",0.17,3095,4,0.59,"seller_id, seller_zip_code_prefix, seller_city, seller_state"
+product_category_name_translation.csv,VALID,utf-8,",",0.0,71,2,0.01,"product_category_name, product_category_name_english"

@@ -1,0 +1,9 @@
+target_table,raw_rows,final_rows,removed_or_dedup,corrected_or_imputed,rejected_invalid,transformation_notes
+CUSTOMERS,99441,99441,0,99441,0,"Standardized city (Title Case), state (UPPER), 5-digit zip prefix"
+GEOLOCATION,1000163,19015,981148,19015,0,Aggregated duplicate zip prefixes using mean(lat/lng) and first(city/state)
+SELLERS,3095,3095,0,3095,0,"Standardized city (Title Case), state (UPPER), 5-digit zip prefix"
+PRODUCTS,32951,32951,0,625,0,Integrated English category names; fixed 'lenght' typo; imputed 610 missing categories & 2 missing dimensions
+ORDERS,99441,99441,0,99441,0,Standardized 5 timestamp columns to YYYY-MM-DD HH:MM:SS; preserved valid NULLs for undelivered orders
+ORDER_ITEMS,112650,112650,0,112650,0,Validated price>=0 & freight>=0; added derived column total_item_value; standardized shipping_limit_date
+PAYMENTS,103886,103886,0,103886,0,Standardized payment_type; validated payment_value >= 0
+ORDER_REVIEWS,99224,99224,0,99224,0,"Preserved all 99,224 rows via composite key (review_id, order_id); cleaned comment strings & timestamps"

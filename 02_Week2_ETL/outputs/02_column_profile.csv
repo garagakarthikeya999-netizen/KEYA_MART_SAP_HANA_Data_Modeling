@@ -1,0 +1,53 @@
+dataset,column_name,dtype,row_count,non_null_count,null_count,null_pct,unique_count,is_unique_no_null,sample_value
+customers,customer_id,str,99441,99441,0,0.0,99441,True,06b8999e2fba1a1fbc88172c00ba8bc7
+customers,customer_unique_id,str,99441,99441,0,0.0,96096,False,861eff4711a542e4b93843c6dd7febb0
+customers,customer_zip_code_prefix,int64,99441,99441,0,0.0,14994,False,14409
+customers,customer_city,str,99441,99441,0,0.0,4119,False,franca
+customers,customer_state,str,99441,99441,0,0.0,27,False,SP
+geolocation,geolocation_zip_code_prefix,int64,1000163,1000163,0,0.0,19015,False,1037
+geolocation,geolocation_lat,float64,1000163,1000163,0,0.0,717372,False,-23.54562128115268
+geolocation,geolocation_lng,float64,1000163,1000163,0,0.0,717615,False,-46.63929204800168
+geolocation,geolocation_city,str,1000163,1000163,0,0.0,8011,False,sao paulo
+geolocation,geolocation_state,str,1000163,1000163,0,0.0,27,False,SP
+orders,order_id,str,99441,99441,0,0.0,99441,True,e481f51cbdc54678b7cc49136f2d6af7
+orders,customer_id,str,99441,99441,0,0.0,99441,True,9ef432eb6251297304e76186b10a928d
+orders,order_status,str,99441,99441,0,0.0,8,False,delivered
+orders,order_purchase_timestamp,str,99441,99441,0,0.0,98875,False,2017-10-02 10:56:33
+orders,order_approved_at,str,99441,99281,160,0.16,90733,False,2017-10-02 11:07:15
+orders,order_delivered_carrier_date,str,99441,97658,1783,1.79,81018,False,2017-10-04 19:55:00
+orders,order_delivered_customer_date,str,99441,96476,2965,2.98,95664,False,2017-10-10 21:25:13
+orders,order_estimated_delivery_date,str,99441,99441,0,0.0,459,False,2017-10-18 00:00:00
+order_items,order_id,str,112650,112650,0,0.0,98666,False,00010242fe8c5a6d1ba2dd792cb16214
+order_items,order_item_id,int64,112650,112650,0,0.0,21,False,1
+order_items,product_id,str,112650,112650,0,0.0,32951,False,4244733e06e7ecb4970a6e2683c13e61
+order_items,seller_id,str,112650,112650,0,0.0,3095,False,48436dade18ac8b2bce089ec2a041202
+order_items,shipping_limit_date,str,112650,112650,0,0.0,93318,False,2017-09-19 09:45:35
+order_items,price,float64,112650,112650,0,0.0,5968,False,58.9
+order_items,freight_value,float64,112650,112650,0,0.0,6999,False,13.29
+payments,order_id,str,103886,103886,0,0.0,99440,False,b81ef226f3fe1789b1e8b2acac839d17
+payments,payment_sequential,int64,103886,103886,0,0.0,29,False,1
+payments,payment_type,str,103886,103886,0,0.0,5,False,credit_card
+payments,payment_installments,int64,103886,103886,0,0.0,24,False,8
+payments,payment_value,float64,103886,103886,0,0.0,29077,False,99.33
+reviews,review_id,str,99224,99224,0,0.0,98410,False,7bc2406110b926393aa56f80a40eba40
+reviews,order_id,str,99224,99224,0,0.0,98673,False,73fc7af87114b39712e6da79b0a377eb
+reviews,review_score,int64,99224,99224,0,0.0,5,False,4
+reviews,review_comment_title,str,99224,11568,87656,88.34,4527,False,recomendo
+reviews,review_comment_message,str,99224,40977,58247,58.7,36159,False,Recebi bem antes do prazo estipulado.
+reviews,review_creation_date,str,99224,99224,0,0.0,636,False,2018-01-18 00:00:00
+reviews,review_answer_timestamp,str,99224,99224,0,0.0,98248,False,2018-01-18 21:46:59
+products,product_id,str,32951,32951,0,0.0,32951,True,1e9e8ef04dbcff4541ed26657ea517e5
+products,product_category_name,str,32951,32341,610,1.85,73,False,perfumaria
+products,product_name_lenght,float64,32951,32341,610,1.85,66,False,40.0
+products,product_description_lenght,float64,32951,32341,610,1.85,2960,False,287.0
+products,product_photos_qty,float64,32951,32341,610,1.85,19,False,1.0
+products,product_weight_g,float64,32951,32949,2,0.01,2204,False,225.0
+products,product_length_cm,float64,32951,32949,2,0.01,99,False,16.0
+products,product_height_cm,float64,32951,32949,2,0.01,102,False,10.0
+products,product_width_cm,float64,32951,32949,2,0.01,95,False,14.0
+sellers,seller_id,str,3095,3095,0,0.0,3095,True,3442f8959a84dea7ee197c632cb2df15
+sellers,seller_zip_code_prefix,int64,3095,3095,0,0.0,2246,False,13023
+sellers,seller_city,str,3095,3095,0,0.0,611,False,campinas
+sellers,seller_state,str,3095,3095,0,0.0,23,False,SP
+category_translation,product_category_name,str,71,71,0,0.0,71,True,beleza_saude
+category_translation,product_category_name_english,str,71,71,0,0.0,71,True,health_beauty

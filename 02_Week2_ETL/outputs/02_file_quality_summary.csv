@@ -1,0 +1,10 @@
+dataset,file_name,row_count,column_count,exact_duplicate_rows,total_missing_cells,single_pk_candidates
+customers,olist_customers_dataset.csv,99441,5,0,0,customer_id
+geolocation,olist_geolocation_dataset.csv,1000163,5,261831,0,None (Composite/Aggregation needed)
+orders,olist_orders_dataset.csv,99441,8,0,4908,"order_id, customer_id"
+order_items,olist_order_items_dataset.csv,112650,7,0,0,None (Composite/Aggregation needed)
+payments,olist_order_payments_dataset.csv,103886,5,0,0,None (Composite/Aggregation needed)
+reviews,olist_order_reviews_dataset.csv,99224,7,0,145903,None (Composite/Aggregation needed)
+products,olist_products_dataset.csv,32951,9,0,2448,product_id
+sellers,olist_sellers_dataset.csv,3095,4,0,0,seller_id
+category_translation,product_category_name_translation.csv,71,2,0,0,"product_category_name, product_category_name_english"
